@@ -3,7 +3,7 @@ import openai
 import os
 
 # Initialize the GPT-4 API client
-openai.api_key = "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"
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 # Title of the Streamlit app
 st.title('Homework generator')
