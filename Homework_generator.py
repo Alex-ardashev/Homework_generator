@@ -64,6 +64,8 @@ content = {
         "input1": "What is the subject and primary concept you wish to focus on with the students?",
         "input2": "What is the age group or class level of the students?",
         "input3": "How does this concept integrate with your current curriculum, and what prior knowledge do the students have on this topic?",
+        "input4": "Additional Details",
+        "help4": "Feel free to describe any specific aspects or requirements for the project here. You might include details such as whether it is a group or individual project, the particular theme or focus of the project, or any custom expectations regarding the outcome or deliverables of the project",
         "button": "Generate Homework"
     },
     "German": {
@@ -72,6 +74,8 @@ content = {
         "input1": "Welches ist das Thema und der primäre Schwerpunkt, den Sie mit den Schülern bearbeiten möchten?",
         "input2": "Welche Altersgruppe oder Klassenstufe haben die Schüler?",
         "input3": "Wie integriert sich dieses Konzept in Ihren aktuellen Lehrplan und welche Vorkenntnisse haben die Schüler zu diesem Thema?",
+        "input4": "Zusätzliche Details",
+        "help4": "Beschreiben Sie hier gerne spezifische Aspekte oder Anforderungen des Projekts. Sie könnten Details angeben wie, ob es sich um ein Gruppen- oder Einzelprojekt handelt, das spezielle Thema oder den Schwerpunkt des Projekts, oder jegliche individuelle Erwartungen bezüglich des Ergebnisses oder der Projektergebnisse",
         "button": "Hausaufgaben generieren"
     }
 }
@@ -85,17 +89,19 @@ st.subheader(selected_content["subheader"])
 info = st.text_input(selected_content["input1"])
 info1 = st.text_input(selected_content["input2"])
 info2 = st.text_area(selected_content["input3"])
+info3 = st.text_input(selected_content["input4"], help=selected_content["help4"])
+
+
 
 questions_and_answers = [
     {"question": selected_content["input1"], "answer": info},
     {"question": selected_content["input2"], "answer": info1},
     {"question": selected_content["input3"], "answer": info2},
+    {"question": selected_content["input4"], "answer": info3},
 ]
 
 # Button to generate life experience
 if st.button(selected_content["button"]):
-
-
     # Prompt for GPT-4
     messages = [
         {"role": "system", "content": """
@@ -112,6 +118,7 @@ Please follow the structure below to create the assignment:
 - **Exciting Title**: Capture the essence of the project in a catchy and engaging way.
 - **Objective**: Explain why this project is beneficial for the students and how it connects to the real world.
 - **Task Description**: Provide a detailed description of the task at hand, emphasizing the application of the scientific concept.
+- **List of prequisites**: (if there are)Provide a detailed description of the things that students have to prepare in order to make the project. 
 - **List of Actions**: Outline a series of steps or actions that the students need to take to successfully complete the project.
 - **Expected Outcome**: Specify what students should submit to the teacher as proof of their learning and understanding of the concept.
 
@@ -138,3 +145,4 @@ Encourage the students to explore their creativity and to think out of the box w
         st.markdown(generated_experience)
     else:
         st.error('The generated content is empty. Please try again.')
+

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d22d120-2c0f-4245-9a60-d4d24d6f676f" name="Changes" comment="prompt changes">
+    <list default="true" id="2d22d120-2c0f-4245-9a60-d4d24d6f676f" name="Changes" comment="adding German language">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homework_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/homework_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +139,7 @@
       <workItem from="1693900132777" duration="6134000" />
       <workItem from="1693906867600" duration="8000" />
       <workItem from="1693907135005" duration="10000" />
-      <workItem from="1693919788948" duration="1979000" />
+      <workItem from="1693919788948" duration="5840000" />
     </task>
     <task id="LOCAL-00001" summary="add reqs">
       <created>1693853549161</created>
@@ -168,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693921653228</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="adding German language">
+      <created>1693922254462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693922254462</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,7 +186,8 @@
     <MESSAGE value="add reqs" />
     <MESSAGE value="design" />
     <MESSAGE value="prompt changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="prompt changes" />
+    <MESSAGE value="adding German language" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding German language" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/career_bot$Homework_generator.coverage" NAME="Homework_generator Coverage Results" MODIFIED="1693857572411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
