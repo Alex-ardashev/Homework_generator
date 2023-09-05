@@ -3,7 +3,6 @@ import openai
 import os
 import base64
 
-
 @st.cache_data
 def get_img_as_base64(file):
     with open(file, "rb") as f:
@@ -50,42 +49,52 @@ h1 {{
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
-# [data-testid="stSidebar"] > div:first-child {{
-# background-image: url("https://images.unsplash.com/photo-1501426026826-31c667bdf23d");
-# background-position: center;
-# background-repeat: no-repeat;
-# background-attachment: fixed;
-# }}
-# [data-testid="stHeader"] {{
-# background: rgba(0,0,0,0);
-# }}
-#
-# [data-testid="stToolbar"] {{
-# right: 2rem;
-# }}
-
-
 
 # Initialize the GPT-4 API client
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
-# Title of the Streamlit app
-st.title('Homework Creator')
+# Language selection
+language_selection = st.sidebar.selectbox('Select Language', ['English', 'German'])
 
-st.subheader('Kindly furnish us with details regarding the assignment you wish to create:')
-info = st.text_input('What is the subject and primary concept you wish to focus on with the students?')
-info1 = st.text_input('What is the age group or class level of the students?')
-info2 = st.text_area('How does this concept integrates with your current curriculum, and what prior knowledge do the students have on this topic?')
+# English and German content dictionaries
+content = {
+    "English": {
+        "title": "Homework Creator",
+        "subheader": "Kindly furnish us with details regarding the assignment you wish to create:",
+        "input1": "What is the subject and primary concept you wish to focus on with the students?",
+        "input2": "What is the age group or class level of the students?",
+        "input3": "How does this concept integrate with your current curriculum, and what prior knowledge do the students have on this topic?",
+        "button": "Generate Homework"
+    },
+    "German": {
+        "title": "Hausaufgaben Ersteller",
+        "subheader": "Bitte geben Sie uns Einzelheiten zur Aufgabe, die Sie erstellen möchten:",
+        "input1": "Welches ist das Thema und der primäre Schwerpunkt, den Sie mit den Schülern bearbeiten möchten?",
+        "input2": "Welche Altersgruppe oder Klassenstufe haben die Schüler?",
+        "input3": "Wie integriert sich dieses Konzept in Ihren aktuellen Lehrplan und welche Vorkenntnisse haben die Schüler zu diesem Thema?",
+        "button": "Hausaufgaben generieren"
+    }
+}
+
+# Set the language content based on the selection
+selected_content = content[language_selection]
+
+# Display the content
+st.title(selected_content["title"])
+st.subheader(selected_content["subheader"])
+info = st.text_input(selected_content["input1"])
+info1 = st.text_input(selected_content["input2"])
+info2 = st.text_area(selected_content["input3"])
 
 questions_and_answers = [
-    {"question": "What is the subject and primary concept you wish to focus on with the students?", "answer": info},
-    {"question": "What is the age group and class level of the students?", "answer": info1},
-    {"question": "How does this concept integrates with your current curriculum, and what prior knowledge do the students have on this topic?", "answer": info2},
+    {"question": selected_content["input1"], "answer": info},
+    {"question": selected_content["input2"], "answer": info1},
+    {"question": selected_content["input3"], "answer": info2},
 ]
 
-
 # Button to generate life experience
-if st.button('Generate Homework'):
+if st.button(selected_content["button"]):
+
 
     # Prompt for GPT-4
     messages = [
@@ -110,7 +119,7 @@ Encourage the students to explore their creativity and to think out of the box w
 
 """
          },
-        {"role": "user", "content": f"Please generate a concrete project that I can print and give to my kids. Here is the info about my kids {questions_and_answers}"}
+        {"role": "user", "content": f"Please generate a concrete project in {language_selection} that I can print and give to my kids. Here is the info about my kids {questions_and_answers}"}
     ]
 
     # Make API call to GPT-4
