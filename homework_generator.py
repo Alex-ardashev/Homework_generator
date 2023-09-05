@@ -73,18 +73,14 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 st.title('Homework Creator')
 
 st.subheader('Kindly furnish us with details regarding the assignment you wish to create:')
-info = st.text_input('What is the primary topic or concept you wish to focus on with the students?')
+info = st.text_input('What is the subject and primary concept you wish to focus on with the students?')
 info1 = st.text_input('What is the age group or class level of the students?')
-info2 = st.text_input('Approximately how much time should students dedicate to this assignment?')
-info3 = st.text_input('Do students need to purchase or bring any supplementary materials for the project?')
-info4 = st.text_area('How does this topic or concept integrate with your current curriculum, and what prior knowledge do the students have on this topic?')
+info2 = st.text_area('How does this concept integrates with your current curriculum, and what prior knowledge do the students have on this topic?')
 
 questions_and_answers = [
-    {"question": "What is the primary topic or concept you wish to focus on with the students?", "answer": info},
-    {"question": "What is the age group or class level of the students?", "answer": info1},
-    {"question": "Approximately how much time should students dedicate to this assignment?", "answer": info2},
-    {"question": "Do students need to purchase or bring any supplementary materials for the project?", "answer": info3},
-    {"question": "How does this topic or concept integrate with your current curriculum, and what prior knowledge do the students have on this topic?", "answer": info4},
+    {"question": "What is the subject and primary concept you wish to focus on with the students?", "answer": info},
+    {"question": "What is the age group and class level of the students?", "answer": info1},
+    {"question": "How does this concept integrates with your current curriculum, and what prior knowledge do the students have on this topic?", "answer": info2},
 ]
 
 
@@ -94,10 +90,27 @@ if st.button('Generate Homework'):
     # Prompt for GPT-4
     messages = [
         {"role": "system", "content": """
-        You are a teacher assistant. The teacher enters the concept he wants to teach kids and then a homework is being created. Always provide response in markdown.
-         The homework should be in form of a practical real-world project where the concept teacher explained should be used as a tool to solve the real-world problem."""
+You have stepped into the role of a Teacher Assistant who specializes in creating engaging and educational homework assignments. You are tasked with developing a project that will be presented in a gamified format to make learning fun and interactive for the students. The goal is to craft a project where students can apply the scientific concepts they've learned in a real-world context.
+
+Remember, the students will be referring to this in the future, so it should be forward-thinking and encouraging.
+
+--- Important Guidelines ---
+1. The project should revolve around a real-world scenario or problem that requires the application of the concept taught.
+2. The assignment should encourage creativity and critical thinking.
+
+Please follow the structure below to create the assignment:
+
+- **Exciting Title**: Capture the essence of the project in a catchy and engaging way.
+- **Objective**: Explain why this project is beneficial for the students and how it connects to the real world.
+- **Task Description**: Provide a detailed description of the task at hand, emphasizing the application of the scientific concept.
+- **List of Actions**: Outline a series of steps or actions that the students need to take to successfully complete the project.
+- **Expected Outcome**: Specify what students should submit to the teacher as proof of their learning and understanding of the concept.
+
+Encourage the students to explore their creativity and to think out of the box while working on the project.
+
+"""
          },
-        {"role": "user", "content": f"Please generate a concrete project that I can print and give to my kids. Here is the info about my kids {questions_and_answers}. Make the project title interesting"}
+        {"role": "user", "content": f"Please generate a concrete project that I can print and give to my kids. Here is the info about my kids {questions_and_answers}"}
     ]
 
     # Make API call to GPT-4
