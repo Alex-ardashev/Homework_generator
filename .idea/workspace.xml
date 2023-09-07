@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d22d120-2c0f-4245-9a60-d4d24d6f676f" name="Changes" comment="Additional details">
+    <list default="true" id="2d22d120-2c0f-4245-9a60-d4d24d6f676f" name="Changes" comment="New promt + reqs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Homework_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +151,7 @@
       <workItem from="1694021265485" duration="1369000" />
       <workItem from="1694023903403" duration="2708000" />
       <workItem from="1694072639510" duration="4142000" />
-      <workItem from="1694107968052" duration="2649000" />
+      <workItem from="1694107968052" duration="3001000" />
     </task>
     <task id="LOCAL-00001" summary="add reqs">
       <created>1693853549161</created>
@@ -202,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693946609033</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="New promt + reqs">
+      <created>1694114912799</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1694114912799</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +221,8 @@
     <MESSAGE value="prompt changes" />
     <MESSAGE value="adding German language" />
     <MESSAGE value="Additional details" />
-    <option name="LAST_COMMIT_MESSAGE" value="Additional details" />
+    <MESSAGE value="New promt + reqs" />
+    <option name="LAST_COMMIT_MESSAGE" value="New promt + reqs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/career_bot$Homework_generator.coverage" NAME="Homework_generator Coverage Results" MODIFIED="1693857572411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
