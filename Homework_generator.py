@@ -13,40 +13,41 @@ img = get_img_as_base64("image.jpg")
 page_bg_img = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-background-image: url("data:image/png;base64,{img}");
-background-size: 100%;
-background-position: center;
-background-repeat: repeat;
-background-attachment: local;
+    background-image: url("data:image/png;base64,{img}");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: repeat;
+    background-attachment: local;
 }}
 body {{
-    background-color: pink;
+    background-color: white; /* Changed to white to resemble A4 paper */
 }}
 .stTextInput input {{
     border-radius: 15px;
-    border: 1px solid #ff99cc;
-    background-color: #ffebf7;
+    border: 1px solid #ccc; /* Changed to a neutral border color */
+    background-color: #f9f9f9; /* Changed to a light gray background color */
 }}
 .stTextArea textarea {{
     border-radius: 15px;
-    border: 1px solid #ff99cc;
-    background-color: #ffebf7;
+    border: 1px solid #ccc; /* Changed to a neutral border color */
+    background-color: #f9f9f9; /* Changed to a light gray background color */
 }}
 .stButton>button {{
     border-radius: 20px;
-    background-color: #ff99cc;
+    background-color: #007bff; /* Changed to a neutral button color */
     border: none;
     color: white;
     font-size: 1em;
 }}
 h1 {{
-    color: #ff66b2;
+    color: #000; /* Changed to black color for better readability */
 }}
 .markdown-text-container {{
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    color: #ff3399;
+    font-family: 'Arial', sans-serif; /* Changed to Arial for a more professional look */
+    color: #000; /* Changed to black color for better readability */
 }}
 </style>
+
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
@@ -55,6 +56,9 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 # Language selection
 language_selection = st.sidebar.selectbox('Select Language', ['English', 'German'])
+with st.sidebar:
+    st.title('Feedback:')
+    st.info('Please send your feedback to oribo.official@gmail.com')
 
 # English and German content dictionaries
 content = {
@@ -65,17 +69,17 @@ content = {
         "input2": "What is the age group or class level of the students?",
         "input3": "How does this concept integrate with your current curriculum, and what prior knowledge do the students have on this topic?",
         "input4": "Additional Details",
-        "help4": "Feel free to describe any specific aspects or requirements for the project here. You might include details such as whether it is a group or individual project, the particular theme or focus of the project, or any custom expectations regarding the outcome or deliverables of the project",
+        "placeholder4": "Execution time, group/individual project etc",
         "button": "Generate Homework"
     },
     "German": {
         "title": "Hausaufgaben Ersteller",
-        "subheader": "Bitte geben Sie uns Einzelheiten zur Aufgabe, die Sie erstellen möchten:",
-        "input1": "Welches ist das Thema und der primäre Schwerpunkt, den Sie mit den Schülern bearbeiten möchten?",
-        "input2": "Welche Altersgruppe oder Klassenstufe haben die Schüler?",
-        "input3": "Wie integriert sich dieses Konzept in Ihren aktuellen Lehrplan und welche Vorkenntnisse haben die Schüler zu diesem Thema?",
+        "subheader": "Bitte geben Sie uns Details zur Aufgabe, die Sie erstellen möchten:",
+        "input1": "Um welches Thema und welchen zentralen Aspekt möchten Sie sich mit den Schülern konzentrieren?",
+        "input2": "Wie alt sind die Schüler oder in welcher Klassenstufe befinden sie sich?",
+        "input3": "Wie fügt sich dieses Konzept in Ihren aktuellen Lehrplan ein und welche Vorkenntnisse haben die Schüler zu diesem Thema?",
         "input4": "Zusätzliche Details",
-        "help4": "Beschreiben Sie hier gerne spezifische Aspekte oder Anforderungen des Projekts. Sie könnten Details angeben wie, ob es sich um ein Gruppen- oder Einzelprojekt handelt, das spezielle Thema oder den Schwerpunkt des Projekts, oder jegliche individuelle Erwartungen bezüglich des Ergebnisses oder der Projektergebnisse",
+        "placeholder4": "Ausführungszeit, Gruppen-/Einzelprojekt usw.",
         "button": "Hausaufgaben generieren"
     }
 }
@@ -89,7 +93,7 @@ st.subheader(selected_content["subheader"])
 info = st.text_input(selected_content["input1"])
 info1 = st.text_input(selected_content["input2"])
 info2 = st.text_area(selected_content["input3"])
-info3 = st.text_input(selected_content["input4"], help=selected_content["help4"])
+info3 = st.text_input(selected_content["input4"], placeholder=selected_content["placeholder4"])
 
 
 
@@ -102,47 +106,37 @@ questions_and_answers = [
 
 # Button to generate life experience
 if st.button(selected_content["button"]):
-    # Prompt for GPT-4
-    messages = [
-        {"role": "system", "content": """
-You have stepped into the role of a Teacher Assistant who specializes in creating engaging and educational homework assignments. You are tasked with developing a project that will be presented in a gamified format to make learning fun and interactive for the students. The goal is to craft a project where students can apply the scientific concepts they've learned in a real-world context.
+    with st.spinner('Generating homework...'):
+        # Prompt for GPT-4
+        messages = [
+            {"role": "system", "content": """
+    You have stepped into the role of a Teacher Assistant who specializes in creating engaging and educational homework assignments. 
+    
+    You are tasked with gamifying the education to make learning fun and interactive for the students. 
+    
+    --- Important Guidelines ---
+    1. The project should revolve around a real-world scenario or problem to solve which student should apply concept that teacher wants to focus on.
+    2. The assignment should encourage creativity and critical thinking.
+    3. Generate it for students and below - guidelines part for teacher.
+    4. Always format your answer, so it is easy to read and print.
+    """
+             },
+            {"role": "user", "content": f"Please generate a concrete project in {language_selection} that I can print and give to my kids. Here is the info about my kids {questions_and_answers}"}
+        ]
 
-Remember, the students will be referring to this in the future, so it should be forward-thinking and encouraging.
+        # Make API call to GPT-4
+        model_engine = "gpt-4"  # Use the appropriate GPT-4 model engine
+        response = openai.ChatCompletion.create(
+            model=model_engine,
+            messages=messages
+        )
 
---- Important Guidelines ---
-1. The project should revolve around a real-world scenario or problem that requires the application of the concept taught.
-2. The assignment should encourage creativity and critical thinking.
+        #st.write(questions_ands)
 
-Please follow the structure below to create the assignment:
-
-- **Exciting Title**: Capture the essence of the project in a catchy and engaging way.
-- **Objective**: Explain why this project is beneficial for the students and how it connects to the real world.
-- **Task Description**: Provide a detailed description of the task at hand, emphasizing the application of the scientific concept.
-- **List of prequisites**: (if there are)Provide a detailed description of the things that students have to prepare in order to make the project. 
-- **List of Actions**: Outline a series of steps or actions that the students need to take to successfully complete the project.
-- **Expected Outcome**: Specify what students should submit to the teacher as proof of their learning and understanding of the concept.
-
-Encourage the students to explore their creativity and to think out of the box while working on the project.
-
-"""
-         },
-        {"role": "user", "content": f"Please generate a concrete project in {language_selection} that I can print and give to my kids. Here is the info about my kids {questions_and_answers}"}
-    ]
-
-    # Make API call to GPT-4
-    model_engine = "gpt-4"  # Use the appropriate GPT-4 model engine
-    response = openai.ChatCompletion.create(
-        model=model_engine,
-        messages=messages
-    )
-
-    #st.write(questions_ands)
-
-    # Extract and display the generated text
-    generated_experience = response['choices'][0]['message']['content'].strip()
-    if generated_experience:
-        st.write('Please copy the details below, paste them into your document, and proceed to print.')
-        st.markdown(generated_experience)
-    else:
-        st.error('The generated content is empty. Please try again.')
-
+        # Extract and display the generated text
+        generated_experience = response['choices'][0]['message']['content'].strip()
+        if generated_experience:
+            st.write('Please copy the details below, paste them into your document, and proceed to print.')
+            st.markdown(generated_experience)
+        else:
+            st.error('The generated content is empty. Please try again.')
