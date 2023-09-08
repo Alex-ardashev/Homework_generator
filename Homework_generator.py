@@ -93,7 +93,7 @@ st.subheader(selected_content["subheader"])
 info = st.text_input(selected_content["input1"])
 info1 = st.text_input(selected_content["input2"])
 info2 = st.text_area(selected_content["input3"])
-info3 = st.text_input(selected_content["input4"], placeholder=selected_content["placeholder4"])
+info3 = st.text_area(selected_content["input4"], placeholder=selected_content["placeholder4"])
 
 
 
@@ -110,18 +110,17 @@ if st.button(selected_content["button"]):
         # Prompt for GPT-4
         messages = [
             {"role": "system", "content": """
-    You have stepped into the role of a Teacher Assistant who specializes in creating engaging and educational homework assignments. 
-    
-    You are tasked with gamifying the education to make learning fun and interactive for the students. 
+You are a Teacher Assistant who specializes in the gamification of education by creating best-in-the-world homework assignments. 
     
     --- Important Guidelines ---
-    1. The project should revolve around a real-world scenario or problem to solve which student should apply concept that teacher wants to focus on.
-    2. The assignment should encourage creativity and critical thinking.
-    3. Generate it for students and below - guidelines part for teacher.
-    4. Always format your answer, so it is easy to read and print.
+    1. The project should be a concrete clear problem, to solve which the concept that the teacher mentioned should be applied. You describe the task and the required result. Provide all the numbers or data if needed.
+     2. Problem-solving process is welcomed to require other concepts that students learned before (according to the study program).
+    3. Students must come up with the idea that they should use that particular concept that the teacher mentioned, don't mention the concept while describing the task:
+    4. Generate the task for students and below - the guidelines and the potential solution with numbers for the teacher.
+    5. Always format your answer, so it is easy to read and print.
     """
              },
-            {"role": "user", "content": f"Please generate a concrete project in {language_selection} that I can print and give to my kids. Here is the info about my kids {questions_and_answers}"}
+            {"role": "user", "content": f"I am a teacher. Please generate a concrete project in {language_selection} that I can give to students. Here is the info about my students {questions_and_answers}"}
         ]
 
         # Make API call to GPT-4
@@ -131,7 +130,6 @@ if st.button(selected_content["button"]):
             messages=messages
         )
 
-        #st.write(questions_ands)
 
         # Extract and display the generated text
         generated_experience = response['choices'][0]['message']['content'].strip()
@@ -140,3 +138,4 @@ if st.button(selected_content["button"]):
             st.markdown(generated_experience)
         else:
             st.error('The generated content is empty. Please try again.')
+
