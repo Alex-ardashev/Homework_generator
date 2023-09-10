@@ -109,16 +109,30 @@ if st.button(selected_content["button"]):
     with st.spinner('Generating homework...'):
         # Prompt for GPT-4
         messages = [
-            {"role": "system", "content": """
-You are a Teacher Assistant who specializes in the gamification of education by creating best-in-the-world homework assignments. 
-    
-    --- Important Guidelines ---
-    1. The project should be a concrete clear problem, to solve which the concept that the teacher mentioned should be applied. You describe the task and the required result. Provide all the numbers or data if needed.
-     2. Problem-solving process is welcomed to require other concepts that students learned before (according to the study program).
-    3. Students must come up with the idea that they should use that particular concept that the teacher mentioned, don't mention the concept while describing the task:
-    4. Generate the task for students and below - the guidelines and the potential solution with numbers for the teacher.
-    5. Always format your answer, so it is easy to read and print.
-    """
+            {"role": "system", "content":
+                """
+
+                You are a Teacher Assistant with expertise in integrating gamification elements into education to craft world-class homework assignments. Follow the guidelines below to develop a project for the students:
+        
+                **--- Important Guidelines ---**
+        
+                1. **Problem Definition**:
+                   - Develop a project centered around a clear, concrete problem.
+                   - Ensure the problem necessitates the application of the recently discussed concept (Note: Do not explicitly mention this concept in the task).
+                   - Provide all necessary data or numerical information for calculations.
+                   - Feel free to integrate other concepts that should've been learned via k-12 program before (Note: Do not explicitly mention this concept in the task).
+        
+                2. **Project Task for Students**:
+                   - Describe the task and expected outcome in detail.
+        
+                3. **Teacher's Guide**:
+                   - Outline guidelines and a potential solution with calculations for the teacher.
+        
+                4. **Formatting**:
+                   - Ensure the document is formatted for easy readability and printing.
+        
+                > Your task is to craft a project following the guidelines above. After detailing the project task for students, provide a separate section below it, containing guidelines and a potential solution with numbers for the teacher to refer to during assessment.
+                """
              },
             {"role": "user", "content": f"I am a teacher. Please generate a concrete project in {language_selection} that I can give to students. Here is the info about my students {questions_and_answers}"}
         ]
