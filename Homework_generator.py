@@ -68,9 +68,9 @@ content = {
         "input1": "What topic and main idea do you want to explore with the students?",
         "input2": "How old are the students or what grade are they in?",
         "input3": "How does this topic fit with what you are currently teaching, and what do the students already know about it?",
-        "input4": "Should students use extra materials or resources?",
-        "input5": "Should it be a group or solo project?",  # Adjusted
-        "input6": "Estimated time for project",  # Adjusted
+        "input4": "Should extra materials be used?",
+        "input5": "Should it be a group or solo project?",
+        "input6": "Estimated time for project",
         "button": "Create Project"
     },
     "German": {
@@ -79,9 +79,9 @@ content = {
         "input1": "Welches Thema und welche Hauptidee möchten Sie mit den Schülern erkunden?",
         "input2": "Wie alt sind die Schüler oder in welcher Klasse sind sie?",
         "input3": "Wie passt dieses Thema zu dem, was Sie derzeit unterrichten, und was wissen die Schüler bereits darüber?",
-        "input4": "Sollten die Schüler zusätzliche Materialien oder Ressourcen verwenden?",
-        "input5": "Soll es ein Gruppen- oder Einzelprojekt sein?",  # Adjusted
-        "input6": "Geschätzte Zeit für das Projekt",  # Adjusted
+        "input4": "Sollten zusätzliche Materialien verwendet werden?",
+        "input5": "Soll es ein Gruppen- oder Einzelprojekt sein?",
+        "input6": "Geschätzte Zeit für das Projekt",
         "button": "Projekt erstellen"
     }
 }
@@ -95,8 +95,8 @@ st.subheader(selected_content["subheader"])
 info1 = st.text_input(selected_content["input1"])
 info2 = st.text_input(selected_content["input2"])
 info3 = st.text_area(selected_content["input3"])
-info4 = st.selectbox(selected_content["input4"], ["yes", "no"])
-info5 = st.selectbox(selected_content["input5"], ["yes", "no"])  # Adjusted to dropdown menu
+info4 = st.selectbox(selected_content["input4"], ["No", "Yes"])
+info5 = st.selectbox(selected_content["input5"], ["Solo", "Group"])  # Adjusted to dropdown menu
 info6 = st.text_input(selected_content["input6"])  # Adjusted to text input
 
 
