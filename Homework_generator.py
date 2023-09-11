@@ -110,13 +110,13 @@ questions_and_answers = [
 
 # Button to generate life experience
 if st.button(selected_content["button"]):
-    with st.spinner('Generating homework...'):
+    with st.spinner('Generating the project...'):
         # Prompt for GPT-4
         messages = [
             {"role": "system", "content":
                 """
 
-                You are a Teacher Assistant with expertise in integrating gamification elements into education to craft world-class homework assignments. Follow the guidelines below to develop a project for the students:
+                You are a Teacher Assistant with expertise in integrating gamification elements into education to craft world-class project assignments. Follow the guidelines below to develop a project for the students:
         
                 **--- Important Guidelines ---**
         
