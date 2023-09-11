@@ -68,9 +68,9 @@ content = {
         "input1": "What topic and main idea do you want to explore with the students?",
         "input2": "How old are the students or what grade are they in?",
         "input3": "How does this topic fit with what you are currently teaching, and what do the students already know about it?",
-        "input4": "Should students use extra materials or resources? Please list them.",
-        "input5": "More Details",
-        "placeholder5": "Time needed, group or solo project, etc.",
+        "input4": "Should students use extra materials or resources?",
+        "input5": "Should it be a group or solo project?",  # Adjusted
+        "input6": "Estimated time for project",  # Adjusted
         "button": "Create Project"
     },
     "German": {
@@ -79,9 +79,9 @@ content = {
         "input1": "Welches Thema und welche Hauptidee möchten Sie mit den Schülern erkunden?",
         "input2": "Wie alt sind die Schüler oder in welcher Klasse sind sie?",
         "input3": "Wie passt dieses Thema zu dem, was Sie derzeit unterrichten, und was wissen die Schüler bereits darüber?",
-        "input4": "Sollten die Schüler zusätzliche Materialien oder Ressourcen verwenden? Bitte auflisten.",
-        "input5": "Weitere Details",
-        "placeholder5": "Benötigte Zeit, Gruppen- oder Einzelprojekt, usw.",
+        "input4": "Sollten die Schüler zusätzliche Materialien oder Ressourcen verwenden?",
+        "input5": "Soll es ein Gruppen- oder Einzelprojekt sein?",  # Adjusted
+        "input6": "Geschätzte Zeit für das Projekt",  # Adjusted
         "button": "Projekt erstellen"
     }
 }
@@ -95,8 +95,11 @@ st.subheader(selected_content["subheader"])
 info1 = st.text_input(selected_content["input1"])
 info2 = st.text_input(selected_content["input2"])
 info3 = st.text_area(selected_content["input3"])
-info4 = st.text_area(selected_content["input4"])
-info5 = st.text_area(selected_content["input5"], placeholder=selected_content["placeholder5"])
+info4 = st.selectbox(selected_content["input4"], ["yes", "no"])
+info5 = st.selectbox(selected_content["input5"], ["yes", "no"])  # Adjusted to dropdown menu
+info6 = st.text_input(selected_content["input6"])  # Adjusted to text input
+
+
 
 
 
@@ -106,6 +109,7 @@ questions_and_answers = [
     {"question": selected_content["input3"], "answer": info3},
     {"question": selected_content["input4"], "answer": info4},
     {"question": selected_content["input5"], "answer": info5},
+    {"question": selected_content["input6"], "answer": info6},
 ]
 
 # Button to generate life experience
@@ -114,9 +118,13 @@ if st.button(selected_content["button"]):
         # Prompt for GPT-4
         messages = [
             {"role": "system", "content":
-                """
+                f"""
 
-                You are a Teacher Assistant with expertise in integrating gamification elements into education to craft world-class project assignments. Follow the guidelines below to develop a project for the students:
+                You are a Teacher Assistant with expertise in integrating gamification elements into education to craft world-class project assignments. 
+                
+                Here is the info about students {questions_and_answers}
+                
+                Follow the guidelines below to develop a project for the students:
         
                 **--- Important Guidelines ---**
         
@@ -138,7 +146,7 @@ if st.button(selected_content["button"]):
                 > Your task is to craft a project following the guidelines above. After detailing the project task for students, provide a separate section below it, containing guidelines and a potential solution with numbers for the teacher to refer to during assessment.
                 """
              },
-            {"role": "user", "content": f"I am a teacher. Please generate a concrete project in {language_selection} that I can give to students. Here is the info about my students {questions_and_answers}"}
+            {"role": "user", "content": f"I am a teacher. Please generate a concrete project in {language_selection} that I can give to students."}
         ]
 
         # Make API call to GPT-4
