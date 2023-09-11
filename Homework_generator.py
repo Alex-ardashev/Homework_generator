@@ -63,24 +63,26 @@ with st.sidebar:
 # English and German content dictionaries
 content = {
     "English": {
-        "title": "Homework Creator",
-        "subheader": "Kindly furnish us with details regarding the assignment you wish to create:",
-        "input1": "What is the subject and primary concept you wish to focus on with the students?",
-        "input2": "What is the age group or class level of the students?",
-        "input3": "How does this concept integrate with your current curriculum, and what prior knowledge do the students have on this topic?",
-        "input4": "Additional Details",
-        "placeholder4": "Execution time, group/individual project etc",
-        "button": "Generate Homework"
+        "title": "Project Maker",
+        "subheader": "Please give us some info about the project you want to make:",
+        "input1": "What topic and main idea do you want to explore with the students?",
+        "input2": "How old are the students or what grade are they in?",
+        "input3": "How does this topic fit with what you are currently teaching, and what do the students already know about it?",
+        "input4": "Should students use extra materials or resources? Please list them.",
+        "input5": "More Details",
+        "placeholder5": "Time needed, group or solo project, etc.",
+        "button": "Create Project"
     },
     "German": {
-        "title": "Hausaufgaben Ersteller",
-        "subheader": "Bitte geben Sie uns Details zur Aufgabe, die Sie erstellen möchten:",
-        "input1": "Um welches Thema und welchen zentralen Aspekt möchten Sie sich mit den Schülern konzentrieren?",
-        "input2": "Wie alt sind die Schüler oder in welcher Klassenstufe befinden sie sich?",
-        "input3": "Wie fügt sich dieses Konzept in Ihren aktuellen Lehrplan ein und welche Vorkenntnisse haben die Schüler zu diesem Thema?",
-        "input4": "Zusätzliche Details",
-        "placeholder4": "Ausführungszeit, Gruppen-/Einzelprojekt usw.",
-        "button": "Hausaufgaben generieren"
+        "title": "Projektersteller",
+        "subheader": "Bitte geben Sie uns einige Infos zum Projekt, das Sie erstellen möchten:",
+        "input1": "Welches Thema und welche Hauptidee möchten Sie mit den Schülern erkunden?",
+        "input2": "Wie alt sind die Schüler oder in welcher Klasse sind sie?",
+        "input3": "Wie passt dieses Thema zu dem, was Sie derzeit unterrichten, und was wissen die Schüler bereits darüber?",
+        "input4": "Sollten die Schüler zusätzliche Materialien oder Ressourcen verwenden? Bitte auflisten.",
+        "input5": "Weitere Details",
+        "placeholder5": "Benötigte Zeit, Gruppen- oder Einzelprojekt, usw.",
+        "button": "Projekt erstellen"
     }
 }
 
@@ -90,18 +92,20 @@ selected_content = content[language_selection]
 # Display the content
 st.title(selected_content["title"])
 st.subheader(selected_content["subheader"])
-info = st.text_input(selected_content["input1"])
-info1 = st.text_input(selected_content["input2"])
-info2 = st.text_area(selected_content["input3"])
-info3 = st.text_area(selected_content["input4"], placeholder=selected_content["placeholder4"])
+info1 = st.text_input(selected_content["input1"])
+info2 = st.text_input(selected_content["input2"])
+info3 = st.text_area(selected_content["input3"])
+info4 = st.text_area(selected_content["input4"])
+info5 = st.text_area(selected_content["input5"], placeholder=selected_content["placeholder5"])
 
 
 
 questions_and_answers = [
-    {"question": selected_content["input1"], "answer": info},
-    {"question": selected_content["input2"], "answer": info1},
-    {"question": selected_content["input3"], "answer": info2},
-    {"question": selected_content["input4"], "answer": info3},
+    {"question": selected_content["input1"], "answer": info1},
+    {"question": selected_content["input2"], "answer": info2},
+    {"question": selected_content["input3"], "answer": info3},
+    {"question": selected_content["input4"], "answer": info4},
+    {"question": selected_content["input5"], "answer": info5},
 ]
 
 # Button to generate life experience
@@ -117,19 +121,19 @@ if st.button(selected_content["button"]):
                 **--- Important Guidelines ---**
         
                 1. **Problem Definition**:
-                   - Develop a project centered around a clear, concrete problem.
+                   - Develop a project centered around a clear, concrete problem. It should be more complicated and interesting than just a quiz from study books.
                    - Ensure the problem necessitates the application of the recently discussed concept (Note: Do not explicitly mention this concept in the task).
                    - Provide all necessary data or numerical information for calculations.
-                   - Feel free to integrate other concepts that should've been learned via k-12 program before (Note: Do not explicitly mention this concept in the task).
+                   - Feel free to integrate other concepts that should have been learned via study program before (Note: Do not explicitly mention this concept in the task).
+                
+                2. **Desired outcome**:
+                    - Provide information for students on what outcome should be.     
         
-                2. **Project Task for Students**:
+                3. **Hints for Students. Optional to provide**:
                    - Describe the task and expected outcome in detail.
         
-                3. **Teacher's Guide**:
+                4. **Teacher's Guide**:
                    - Outline guidelines and a potential solution with calculations for the teacher.
-        
-                4. **Formatting**:
-                   - Ensure the document is formatted for easy readability and printing.
         
                 > Your task is to craft a project following the guidelines above. After detailing the project task for students, provide a separate section below it, containing guidelines and a potential solution with numbers for the teacher to refer to during assessment.
                 """
@@ -153,3 +157,7 @@ if st.button(selected_content["button"]):
         else:
             st.error('The generated content is empty. Please try again.')
 
+
+
+
+#add whether kids should use additional materials
