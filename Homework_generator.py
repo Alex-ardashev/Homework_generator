@@ -173,10 +173,8 @@ if st.button(selected_content["button"]):
             st.write('Please copy the details below, paste them into your document, and proceed to print.')
             st.markdown(generated_experience)
 
-            # Get the service account details as a dictionary
-            service_account_info = json.loads(os.getenv('GOOGLE_SERVICE_ACCOUNT'))
             # authorization
-            gc = pygsheets.authorize(service_account_file=service_account_info)
+            gc = pygsheets.authorize(service_account_file='service_account.json')
 
             # Create empty dataframe
             df = pd.DataFrame()
