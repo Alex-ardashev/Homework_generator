@@ -1,7 +1,16 @@
-import streamlit as st
+
 import openai
 import os
 import base64
+import streamlit as st
+import pygsheets
+import pandas as pd
+from dotenv import load_dotenv
+import json
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 @st.cache_data
 def get_img_as_base64(file):
@@ -53,6 +62,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Initialize the GPT-4 API client
 openai.api_key = os.environ.get('OPENAI_API_KEY')
+
 
 # Language selection
 language_selection = st.sidebar.selectbox('Select Language', ['English', 'German'])
@@ -162,10 +172,39 @@ if st.button(selected_content["button"]):
         if generated_experience:
             st.write('Please copy the details below, paste them into your document, and proceed to print.')
             st.markdown(generated_experience)
+
+            # Get the service account details as a dictionary
+            service_account_info = json.loads(os.getenv('GOOGLE_SERVICE_ACCOUNT'))
+            # authorization
+            gc = pygsheets.authorize(service_account_file=service_account_info)
+
+            # Create empty dataframe
+            df = pd.DataFrame()
+
+            # open the google spreadsheet (where 'PY to Gsheet Test' is the name of my sheet)
+            sh = gc.open('oribo')
+
+            # Select the first sheet
+            wks = sh[0]
+
+            # Get all values in the sheet
+            all_values = wks.get_all_values()
+
+            # Count the number of non-empty rows
+            num_rows = sum(1 for row in all_values if any(cell for cell in row))
+
+            # Create a dataframe
+            df = pd.DataFrame()
+            df['questions_and_answers'] = [f'''{questions_and_answers}''']
+            df['gpt-reply'] = [f'''{generated_experience}''']
+
+            # If the sheet is empty, set the dataframe from cell B2 (which corresponds to (1,1) in zero-indexed notation)
+            if num_rows == 0:
+                wks.set_dataframe(df, (1, 1))
+            else:
+                # Otherwise, add the data in the next available rows
+                wks.set_dataframe(df, (num_rows + 1, 1))
+
+
         else:
             st.error('The generated content is empty. Please try again.')
-
-
-
-
-#add whether kids should use additional materials
