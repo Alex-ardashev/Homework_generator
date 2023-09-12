@@ -1,15 +1,12 @@
-
 import openai
 import os
 import base64
 import streamlit as st
 import pygsheets
 import pandas as pd
-from dotenv import load_dotenv
-import json
 
-# Load environment variables from .env file
-load_dotenv()
+
+
 
 
 @st.cache_data
@@ -68,7 +65,7 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 language_selection = st.sidebar.selectbox('Select Language', ['English', 'German'])
 with st.sidebar:
     st.title('Feedback:')
-    st.info('Please send your feedback to oribo.official@gmail.com')
+    st.info('Please send purchase requests and feedback to oribo.official@gmail.com')
 
 # English and German content dictionaries
 content = {
@@ -81,7 +78,8 @@ content = {
         "input4": "Should extra materials be used?",
         "input5": "Should it be a group or solo project?",
         "input6": "Estimated time for project",
-        "button": "Create Project"
+        "button": "Create Project",
+
     },
     "German": {
         "title": "Projektersteller",
@@ -92,7 +90,7 @@ content = {
         "input4": "Sollten zusätzliche Materialien verwendet werden?",
         "input5": "Soll es ein Gruppen- oder Einzelprojekt sein?",
         "input6": "Geschätzte Zeit für das Projekt",
-        "button": "Projekt erstellen"
+        "button": "Projekt erstellen",
     }
 }
 
@@ -130,30 +128,24 @@ if st.button(selected_content["button"]):
             {"role": "system", "content":
                 f"""
 
-                You are a Teacher Assistant with expertise in integrating gamification elements into education to craft world-class project assignments. 
+                You are Elon Musk and you would like to bring your project-oriented learning into education to craft assignments for students. 
                 
-                Here is the info about students {questions_and_answers}
+                Here is the info about students: <{questions_and_answers}>.
                 
                 Follow the guidelines below to develop a project for the students:
         
                 **--- Important Guidelines ---**
         
                 1. **Problem Definition**:
-                   - Develop a project centered around a clear, concrete problem. It should be more complicated and interesting than just a quiz from study books.
-                   - Ensure the problem necessitates the application of the recently discussed concept (Note: Do not explicitly mention this concept in the task).
+                   - Develop a project centered around a clear, concrete problem. Ensure the problem necessitates the application of the exploration concept (Note: Do not explicitly mention this concept in the task). Craft the project in a way that to solve it, stundents need to apply additional concepts that they learnt until their K-12 grade (Note: Do not explicitly mention this concept in the task).
                    - Provide all necessary data or numerical information for calculations.
-                   - Feel free to integrate other concepts that should have been learned via study program before (Note: Do not explicitly mention this concept in the task).
                 
                 2. **Desired outcome**:
                     - Provide information for students on what outcome should be.     
         
-                3. **Hints for Students. Optional to provide**:
-                   - Describe the task and expected outcome in detail.
-        
-                4. **Teacher's Guide**:
+                3. **Teacher's Guide**:
                    - Outline guidelines and a potential solution with calculations for the teacher.
-        
-                > Your task is to craft a project following the guidelines above. After detailing the project task for students, provide a separate section below it, containing guidelines and a potential solution with numbers for the teacher to refer to during assessment.
+
                 """
              },
             {"role": "user", "content": f"I am a teacher. Please generate a concrete project in {language_selection} that I can give to students."}
@@ -191,7 +183,6 @@ if st.button(selected_content["button"]):
             # Count the number of non-empty rows
             num_rows = sum(1 for row in all_values if any(cell for cell in row))
 
-            # Create a dataframe
             df = pd.DataFrame()
             df['questions_and_answers'] = [f'''{questions_and_answers}''']
             df['gpt-reply'] = [f'''{generated_experience}''']
