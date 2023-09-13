@@ -140,9 +140,7 @@ if st.button(selected_content["button"]):
                 1. **Problem Definition**:
                    - Project must be centered around concrete problem. 
                    - Phrase the task in a way that students must find some pieces of information themselves (Note: Do not explicitly mention this concept in the task). 
-                   - To tackle the project, students must apply additional concepts that they learnt until their K-12 grade (Note: Do not explicitly mention this concept in the task).
-                   - Students must use creativity, logic, research skills and concepts they know.
-                   - Use real names or existing objects because students should be able to use internet-search to find input information for the task.
+                   - Project must require use of creativity, logic, internet search skills, and k-12 program. To tackle the project, students must apply not only the concept, specified by teacher, but also additional concepts they learnt before (Note: Do not explicitly mention this in the task).
                 
                 2. **Desired outcome**:
                     - Provide all necessary data or numerical information for calculations.
