@@ -139,8 +139,9 @@ if st.button(selected_content["button"]):
         
                 1. **Problem Definition**:
                    - Project must be centered around concrete problem. 
-                   - Phrase the task in a way that students must find some pieces of information themselves using deduction.
-                   - Project resolution must require a mix of creativity, art skills, logic, internet search skills, and k-12 program knowledge. To tackle the project, students must apply not only the concept, specified by teacher, but also additional concepts they learnt before (Note: Do not explicitly mention this in the task).
+                   - Phrase the task in a way that students must find some pieces of information themselves using deduction. (Note: Do not explicitly mention this in the task, just give a little hint).
+                   - Project resolution must require a combination of k-12 concept knowledge with at least one of following: creativity, art skills, logic, internet search skills. 
+                   - Project could require application of more than just one k-12 concept (Note: Do not explicitly mention this in the task).
                 
                 2. **Desired outcome**:
                     - Provide all necessary data or numerical information for calculations.

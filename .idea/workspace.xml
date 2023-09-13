@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2d22d120-2c0f-4245-9a60-d4d24d6f676f" name="Changes" comment="New prompt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Homework_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Homework_generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +207,7 @@
       <workItem from="1694611862026" duration="197000" />
       <workItem from="1694615083900" duration="618000" />
       <workItem from="1694634178460" duration="1000" />
-      <workItem from="1694635026706" duration="907000" />
+      <workItem from="1694635026706" duration="1935000" />
     </task>
     <task id="LOCAL-00001" summary="add reqs">
       <created>1693853549161</created>
@@ -348,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694635218683</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="New prompt">
+      <created>1694636494048</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1694636494048</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
