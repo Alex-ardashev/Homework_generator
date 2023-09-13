@@ -138,7 +138,7 @@ if st.button(selected_content["button"]):
         
                 1. **Problem Definition**:
                    - Develop a project centered around a clear, concrete problem. Ensure the problem necessitates the application of the exploration concept (Note: Do not explicitly mention this concept in the task). Craft the project in a way that to solve it, stundents need to apply additional concepts that they learnt until their K-12 grade (Note: Do not explicitly mention this concept in the task).
-                   - Use real names or existing objects because stundents will be using internet search to find input information for the task.
+                   - Use real names or existing objects because students should be able to use internet-search to find input information for the task.
                    - Provide all necessary data or numerical information for calculations.
                 
                 2. **Desired outcome**:
