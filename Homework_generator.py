@@ -77,7 +77,7 @@ content = {
         "input3": "How does this topic fit with what you are currently teaching, and what do the students already know about it?",
         "input4": "Should extra materials be used?",
         "input5": "Should it be a group or solo project?",
-        "input6": "Estimated time for project",
+        "input6": "How much time should project take?",
         "button": "Create Project",
 
     },
@@ -89,7 +89,7 @@ content = {
         "input3": "Wie passt dieses Thema zu dem, was Sie derzeit unterrichten, und was wissen die Schüler bereits darüber?",
         "input4": "Sollten zusätzliche Materialien verwendet werden?",
         "input5": "Soll es ein Gruppen- oder Einzelprojekt sein?",
-        "input6": "Geschätzte Zeit für das Projekt",
+        "input6": "Wie viel Zeit sollte das Projekt in Anspruch nehmen?",
         "button": "Projekt erstellen",
     }
 }
@@ -103,8 +103,8 @@ st.subheader(selected_content["subheader"])
 info1 = st.text_input(selected_content["input1"])
 info2 = st.text_input(selected_content["input2"])
 info3 = st.text_area(selected_content["input3"])
-info4 = st.selectbox(selected_content["input4"], ["No", "Yes"])
-info5 = st.selectbox(selected_content["input5"], ["Solo", "Group"])  # Adjusted to dropdown menu
+#info4 = st.selectbox(selected_content["input4"], ["No", "Yes"])
+#info5 = st.selectbox(selected_content["input5"], ["Solo", "Group"])  # Adjusted to dropdown menu
 info6 = st.text_input(selected_content["input6"])  # Adjusted to text input
 
 
@@ -115,8 +115,8 @@ questions_and_answers = [
     {"question": selected_content["input1"], "answer": info1},
     {"question": selected_content["input2"], "answer": info2},
     {"question": selected_content["input3"], "answer": info3},
-    {"question": selected_content["input4"], "answer": info4},
-    {"question": selected_content["input5"], "answer": info5},
+    # {"question": selected_content["input4"], "answer": info4},
+    # {"question": selected_content["input5"], "answer": info5},
     {"question": selected_content["input6"], "answer": info6},
 ]
 
@@ -141,8 +141,8 @@ if st.button(selected_content["button"]):
                 1. **Problem Definition**:
                    - Project must be centered around concrete problem. 
                    - Phrase the task in a way that students must find some pieces of information themselves using deduction. (Note: Do not explicitly mention this in the task, just give a little hint).
-                   - Project resolution must require a combination of k-12 concept knowledge with at least one of following: creativity, art skills, logic, internet search skills. 
-                   - Project could require application of more than just one k-12 concept (Note: Do not explicitly mention this in the task).
+                   - Project resolution must require a combination of k-12 concept knowledge with at least one of following: prototype creation, report or presentation skills, art skills, logic, internet search skills. 
+                   - Project could be interdisciplinary and require application of more than just one k-12 concept (Note: Do not explicitly mention this in the task).
                 
                 2. **Desired outcome**:
                     - Provide all necessary data or numerical information for calculations.
