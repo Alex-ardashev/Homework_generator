@@ -64,6 +64,7 @@ openai.api_key = os.environ.get('OPENAI_API_KEY')
 # Language selection
 language_selection = st.sidebar.selectbox('Select Language', ['English', 'German'])
 with st.sidebar:
+    st.info('''This is a demo version of a platform that saves teacher's time and make students excited about the study process by generating engaging projects that might be a homework or in-class activity.''')
     st.title('Feedback:')
     st.info('Please send purchase requests and feedback to oribo.official@gmail.com')
 
