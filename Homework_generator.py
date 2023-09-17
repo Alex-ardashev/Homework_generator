@@ -152,8 +152,8 @@ if st.button(selected_content["button"]):
                    - Provide a clear description what the outcome should be.
                 
                 2. **Teacher's Guide**:
-                   - Provide a detailed and clear instruction on what teacher should do to perform the project. Start from telling teacher that he needs to
-                   copy the project, paste them into document, and distribute across kids.
+                   - Remind the teacher to tell students that if some information pieces are missing, they can use their research skill to them find out. 
+                   - Provide a detailed and clear instruction on what teacher should do to perform the project.
                    - Provide an example of the solution for the teacher.
 
                 """
