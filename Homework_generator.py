@@ -143,16 +143,16 @@ if st.button(selected_content["button"]):
                 **--- Important Guidelines ---**
         
                 1. **Problem Definition**:
-                   - Project must be centered around concrete problem. 
+                   - Project must be centered around concrete problem and make sense. Students should feel that they solve a real problem.
                    - Phrase the task in a way that students must find some pieces of information themselves using deduction. (Note: Do not explicitly mention this in the task).
                    - Project resolution must combine K-12 concept knowledge (Note: based on the information from user) 
-                   with something like: prototype creation, report,presentation skills, art, logic, internet search skills or other actions.
+                   with one or more from the list: prototype creation, report, presentation skills, art, logic, internet search skills, another k-12 topic.
                    - Project could be interdisciplinary and require application of more than just one k-12 concept (Note: Do not explicitly mention this in the task).
                    - Provide all necessary information or data for calculations. If some data can be obtained from the internet search, suggest students to find it themselves.
                    - Provide a clear description what the outcome should be.
                 
                 2. **Teacher's Guide**:
-                   - Remind the teacher to tell students that if some information pieces are missing, they can use their research skill to them find out. 
+                   - Advice the teacher to tell students that if some information pieces are missing, they can use their research skill to them find out. 
                    - Provide a detailed and clear instruction on what teacher should do to perform the project.
                    - Provide an example of the solution for the teacher.
 
