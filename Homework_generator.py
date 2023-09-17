@@ -78,7 +78,7 @@ content = {
         "input3": "How does this topic fit with what you are currently teaching, and what do the students already know about it?",
         "input4": "Should extra materials be used?",
         "input5": "Should it be a group or solo project?",
-        "input6": "How much time should project take?",
+        "input6": "How much time should children spend on project?",
         "button": "Create Project",
 
     },
@@ -132,7 +132,7 @@ if st.button(selected_content["button"]):
                 Rapidly changing world requires a new education paradigm.
                 Your life mission is to bring a project-oriented learning into education to craft assignments for 
                 students based on the input from user.
-                The goal of the project - to make students learn K-12 programme in engaging way while obtaining other skills necessary for living a good life in the future.
+                Focus the project on what really matters to the development of students: their disposition towards learning and complexity, their ability to work effectively in teams, and their capacity to make ethical decisions.
                 Don't break your role under any conditions. 
                 Don't reply for requests you think don't suit to your role. 
                 
@@ -145,9 +145,7 @@ if st.button(selected_content["button"]):
                 1. **Problem Definition**:
                    - Project must be centered around concrete problem and make sense. Students should feel that they solve a real problem.
                    - Phrase the task in a way that students must find some pieces of information themselves using deduction. (Note: Do not explicitly mention this in the task).
-                   - Project resolution must combine K-12 concept knowledge (Note: based on the information from user) 
-                   with one or more from the list: prototype creation, report, presentation skills, art, logic, internet search skills, another k-12 topic.
-                   - Project could be interdisciplinary and require application of more than just one k-12 concept (Note: Do not explicitly mention this in the task).
+                   - It shouldn't be just a boring task. The outcome should be a complete product that students can add to their protfolio.
                    - Provide all necessary information or data for calculations. If some data can be obtained from the internet search, suggest students to find it themselves.
                    - Provide a clear description what the outcome should be.
                 
