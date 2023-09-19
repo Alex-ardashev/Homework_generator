@@ -8,54 +8,54 @@ import pandas as pd
 
 
 
-
-@st.cache_data
-def get_img_as_base64(file):
-    with open(file, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-img = get_img_as_base64("image.jpg")
-page_bg_img = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-    background-image: url("data:image/png;base64,{img}");
-    background-size: 100%;
-    background-position: center;
-    background-repeat: repeat;
-    background-attachment: local;
-}}
-body {{
-    background-color: white; /* Changed to white to resemble A4 paper */
-}}
-.stTextInput input {{
-    border-radius: 15px;
-    border: 1px solid #ccc; /* Changed to a neutral border color */
-    background-color: #f9f9f9; /* Changed to a light gray background color */
-}}
-.stTextArea textarea {{
-    border-radius: 15px;
-    border: 1px solid #ccc; /* Changed to a neutral border color */
-    background-color: #f9f9f9; /* Changed to a light gray background color */
-}}
-.stButton>button {{
-    border-radius: 20px;
-    background-color: #007bff; /* Changed to a neutral button color */
-    border: none;
-    color: white;
-    font-size: 1em;
-}}
-h1 {{
-    color: #000; /* Changed to black color for better readability */
-}}
-.markdown-text-container {{
-    font-family: 'Arial', sans-serif; /* Changed to Arial for a more professional look */
-    color: #000; /* Changed to black color for better readability */
-}}
-</style>
-
-"""
-st.markdown(page_bg_img, unsafe_allow_html=True)
+#
+# @st.cache_data
+# def get_img_as_base64(file):
+#     with open(file, "rb") as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
+#
+# img = get_img_as_base64("image.jpg")
+# page_bg_img = f"""
+# <style>
+# [data-testid="stAppViewContainer"] > .main {{
+#     background-image: url("data:image/png;base64,{img}");
+#     background-size: 100%;
+#     background-position: center;
+#     background-repeat: repeat;
+#     background-attachment: local;
+# }}
+# body {{
+#     background-color: white; /* Changed to white to resemble A4 paper */
+# }}
+# .stTextInput input {{
+#     border-radius: 15px;
+#     border: 1px solid #ccc; /* Changed to a neutral border color */
+#     background-color: #f9f9f9; /* Changed to a light gray background color */
+# }}
+# .stTextArea textarea {{
+#     border-radius: 15px;
+#     border: 1px solid #ccc; /* Changed to a neutral border color */
+#     background-color: #f9f9f9; /* Changed to a light gray background color */
+# }}
+# .stButton>button {{
+#     border-radius: 20px;
+#     background-color: #007bff; /* Changed to a neutral button color */
+#     border: none;
+#     color: white;
+#     font-size: 1em;
+# }}
+# h1 {{
+#     color: #000; /* Changed to black color for better readability */
+# }}
+# .markdown-text-container {{
+#     font-family: 'Arial', sans-serif; /* Changed to Arial for a more professional look */
+#     color: #000; /* Changed to black color for better readability */
+# }}
+# </style>
+#
+# """
+# st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Initialize the GPT-4 API client
 openai.api_key = os.environ.get('OPENAI_API_KEY')
